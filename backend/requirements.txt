@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+sqlalchemy
+sqlmodel
+pydantic
+python-multipart
+face-recognition
+opencv-python
+qrcode

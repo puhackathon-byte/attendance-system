@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduTrack - Documents</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background: #8087f4; min-height: 100vh;
+      padding: 20px; color: white;
+    }
+    .container {
+      max-width: 600px; margin: 0 auto;
+    }
+    .top-bar {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 20px; padding: 15px 20px;
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 25px;
+    }
+    .add-btn {
+      background: rgba(255,255,255,0.2); border: none;
+      color: white; font-size: 14px; font-weight: 600;
+      padding: 6px 15px; border-radius: 20px;
+      cursor: pointer; display: flex; align-items: center; gap: 5px;
+    }
+    .doc-card {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 20px; padding: 20px;
+      margin-bottom: 25px;
+    }
+    .doc-card h3 {
+      font-size: 16px; margin-bottom: 10px; font-weight: 600;
+    }
+    .divider { height: 1px; background: rgba(255,255,255,0.3); margin: 10px 0; }
+    .doc-icon { font-size: 40px; margin: 15px 0; display: flex; justify-content: center; }
+    .doc-card p { font-size: 13px; opacity: 0.9; text-align: center; }
+
+    .upload-form {
+      display: none; 
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(12px);
+      padding: 15px; border-radius: 15px; margin-bottom: 20px;
+    }
+    .upload-form input, .upload-form button {
+      margin: 10px 0; width: 100%; padding: 8px;
+      border-radius: 8px; border: none;
+    }
+    .upload-form button {
+      background: #4CAF50; color: white; cursor: pointer; font-weight: 600;
+    }
+
+    /* Navigation bar */
+    .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            transition: all 0.3s;
+            padding: 5px 15px;
+            border-radius: 15px;
+        }
+
+        .nav-item.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-item i,
+        .nav-item svg {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .nav-item:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+          }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <h2>Documents</h2>
+      <button class="add-btn" onclick="toggleUploadForm()"><i class="fas fa-plus"></i> Add</button>
+    </div>
+
+    <!-- Upload Form -->
+    <form class="upload-form" id="uploadForm" action="http://127.0.0.1:5000/upload" method="POST" enctype="multipart/form-data">
+      <input type="text" name="reason" placeholder="Reason" required>
+      <input type="file" name="file" required>
+      <button type="submit">Upload</button>
+    </form>
+
+    <!-- Example document card -->
+    <div class="doc-card">
+      <h3>Reason: Medical</h3>
+      <div class="divider"></div>
+      <div class="doc-icon"><i class="fas fa-file-alt"></i></div>
+      <p>Uploaded on: 11/09/2025</p>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+    <nav class="navigation">
+        <a href="#" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
+        <a href="http://127.0.0.1:5500/frontend/Document/index.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Documents</span></a>
+        <a href="http://127.0.0.1:5000/" class="nav-item"><i class="fas fa-qrcode"></i><span>Scan</span></a>
+        <a href="http://localhost:3000/studentprofile/index.html" class="nav-item"><i class="fas fa-user"></i><span>Profile</span></a>
+        <a href="#" id="logoutBtn" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+    </nav>
+
+  <script>
+    function toggleUploadForm() {
+      const form = document.getElementById('uploadForm');
+      form.style.display = form.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>

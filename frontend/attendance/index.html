@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance Detail</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <div class="header">
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+    <h1>Attendance Detail</h1>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active">Day Wise</div>
+  </div>
+
+  <div class="info">
+    P = Present , A = Absent , PN = Pending , – = No Lecture/Lab
+  </div>
+
+  <div class="table-container">
+    <table id="attendance-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Slot 1</th>
+          <th>Slot 2</th>
+          <th>Slot 3</th>
+          <th>Slot 4</th>
+          <th>Slot 5</th>
+          <th>Slot 6</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>11-Sep-25 Thu</td>
+          <td class="slot"></td>
+          <td class="slot"></td>
+          <td class="slot"></td>
+          <td class="slot"></td>
+          <td class="slot"></td>
+          <td class="slot"></td>
+        </tr>
+        <tr>
+          <td>10-Sep-25 Wed</td>
+          <td class="slot"></td>
+          <td class="slot"></td>
+          <td class="slot"></td>
+          <td class="slot"></td>
+          <td class="slot"></td>
+          <td class="slot"></td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  </div>
+
+  <nav class="navigation">
+    <a href="index.html" class="nav-item"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="#" class="nav-item"><i class="fas fa-file-alt"></i><span>Documents</span></a>
+    <a href="#" class="nav-item"><i class="fas fa-user"></i><span>Profile</span></a>
+    <a href="#" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+  </nav>
+</body>
+</html>

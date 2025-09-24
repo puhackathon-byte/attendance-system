@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduTrack - Profile</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="logo">Parul University</div>
+        <div class="greeting-section">
+            <h1>Profile</h1>
+            <h2 id="usernameDisplay">Student Name</h2>
+            <p id="enrollmentNo">Enrollment No.</p>
+        </div>
+    </header>
+
+    <div class="card profile-card">
+        <h3 class="section-title">Student Details</h3>
+        <ul>
+            <li><strong>Full Name:</strong> <span id="fullName">Emma Phillips</span></li>
+            <li><strong>Enrollment No:</strong> <span id="enroll">21DSM15</span></li>
+            <li><strong>Email:</strong> <span id="email">emma@example.com</span></li>
+            <li><strong>Department:</strong> <span id="department">Computer Science</span></li>
+        </ul>
+    </div>
+</div>
+
+<nav class="navigation">
+    <a href="../home/index.html" class="nav-item"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="#" id="logoutBtn" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+</nav>
+
+<script>
+// Redirect if no session
+const sessionUser = sessionStorage.getItem('username');
+if (!sessionUser) {
+    window.location.href = '/login';
+}
+
+// Populate dynamic info (can be extended to fetch from API)
+document.getElementById('usernameDisplay').textContent = sessionUser;
+document.getElementById('fullName').textContent = sessionUser;
+document.getElementById('enroll').textContent = '21DSM15'; // Replace with DB/API data
+document.getElementById('enrollmentNo').textContent = 'Enrollment No. 21DSM15';
+document.getElementById('email').textContent = 'emma@example.com'; // Replace from DB/API
+document.getElementById('department').textContent = 'Computer Science'; // Replace from DB/API
+
+// Logout functionality with confirmation
+const logoutBtn = document.getElementById('logoutBtn');
+logoutBtn.addEventListener('click', async () => {
+    const confirmLogout = confirm("Are you sure you want to logout?");
+    if (!confirmLogout) return;
+
+    // Optional: send logout request to backend
+    try {
+        await fetch('http://localhost:3000/api/logout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: sessionUser })
+        });
+    } catch (err) {
+        console.warn("Logout request failed, continuing...");
+    }
+
+    // Clear session storage
+    sessionStorage.removeItem('username');
+
+    // Redirect to login page
+    window.location.href = '/login';
+});
+</script>
+</body>
+</html>
